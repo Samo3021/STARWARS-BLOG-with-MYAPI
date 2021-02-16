@@ -11,19 +11,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					title: "SECOND",
 					background: "white",
 					initial: "white"
+				},
+				{
+					prueba: "Holaqhace",
+					background: "yello",
+					initial: "red"
+				},
+				{
+					prueba2: "Holaqhace",
+					background: "yello",
+					initial: "red"
 				}
 			]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+				getActions().changeColor(0, "blue");
 			},
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+                */
 			},
+			sum: () => {},
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
