@@ -3,21 +3,27 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 
 import { CardPersons } from "../component/cardPersons.js";
+import { CardPlanets } from "../component/cardPlanets.js";
 
 export const Home = () => (
-	<div>
-		<div className="container ">
-			<ul className="row">
+	<div className="container">
+		<div className="align-items-center" text-center mt5>
+			<div className="d-flex flex-row p-4" style={{ maxWidth: "950px", overflow: "auto" }}>
 				<CardPersons />
 				<CardPersons />
 				<CardPersons />
 				<CardPersons />
 				<CardPersons />
 				<CardPersons />
-				<CardPersons />
-				<CardPersons />
-				<CardPersons />
-			</ul>
+			</div>
+			<div className="d-flex flex-row p-4" style={{ maxWidth: "950px", overflow: "auto" }}>
+				<CardPlanets />
+				<CardPlanets />
+				<CardPlanets />
+				<CardPlanets />
+				<CardPlanets />
+				<CardPlanets />
+			</div>
 		</div>
 	</div>
 );

@@ -6,13 +6,15 @@ import injectContext from "./store/appContext";
 
 //aqui va los views(posicion de vista)
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import { SingleProPer } from "./views/singleProPer.js";
+import { SingleProPla } from "./views/singleProPla.js";
+// import { Demo } from "./views/demo";
+// import { Single } from "./views/single";
 
 //aqui van los componentes
-//import { CardPersons } from "./component/cardPersons.js";
 import { Navbar } from "./component/navbar";
 //import { CardPlanets } from "./component/cardPlanets.js";
+//import { CardPersons } from "./component/cardPersons.js";
 
 //create your first component
 const Layout = () => {
@@ -28,11 +30,17 @@ const Layout = () => {
 					<Route exact path="/">
 						<Home />
 					</Route>
-					<Route exact path="/demo">
+					{/* <Route exact path="/demo">
 						<Demo />
 					</Route>
 					<Route exact path="/single/:theid">
 						<Single />
+					</Route> */}
+					<Route exact path="/singleProPer/:Person_id">
+						<SingleProPer />
+					</Route>
+					<Route exact path="/singleProPla/:Planet_id">
+						<SingleProPla />
 					</Route>
 					<Route>
 						<h1>Not found!</h1>
