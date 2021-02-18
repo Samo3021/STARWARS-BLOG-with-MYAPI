@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { Context } from "../store/appContext";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
-		<nav className="navbar navbar-dark bg-primary mb-3">
+		<nav className="navbar navbar-dark bg-primary mb-5">
 			<Link to="/">
 				<span className="navbar-brand ml-5 h1">
 					<img
@@ -15,28 +18,29 @@ export const Navbar = () => {
 			<div className="ml-auto">
 				<Link to="/">{/* <button className="btn btn-primary">Check the Context in action</button> */}</Link>
 			</div>
-			<div className="dropdown mr-5 ">
-				<button
-					className="btn btn-success dropdown-toggle   "
-					type="button"
-					id="dropdownMenuButton"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false">
-					Favorites
-				</button>
-				<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a className="dropdown-item" href="#">
-						Action
-					</a>
-					<a className="dropdown-item" href="#">
-						Another action
-					</a>
-					<a className="dropdown-item" href="#">
-						Something else here
-					</a>
-				</div>
-			</div>
+			<DropdownButton id="dropdown-basic-button" variant="success" title={"Favorites " + store.favorites.length}>
+				{store.favorites.length == 0 ? (
+					<Dropdown.Item>Empty</Dropdown.Item>
+				) : (
+					store.favorites.map((favorite, i) => {
+						return (
+							<Dropdown.Item eventKey={i} key={i} onClick={() => actions.deleteFavorite(i)}>
+								{favorite.type == "people" ? (
+									<div>
+										{favorite.name}
+										<i className="fas fa-trash-alt" />
+									</div>
+								) : (
+									<div>
+										{favorite.name}
+										<i className="fas fa-trash-alt" />
+									</div>
+								)}
+							</Dropdown.Item>
+						);
+					})
+				)}
+			</DropdownButton>
 		</nav>
 	);
 };

@@ -14,30 +14,35 @@ export const CardPersons = () => {
 					<div className="card mb-2 " key={i} style={{ display: "flex", minWidth: "350px", margin: "10px" }}>
 						<img
 							//{props.img}
-							src="https://estaticos.muyinteresante.es/media/cache/1140x_thumb/uploads/images/gallery/59c4f5655bafe82c692a7052/gato-marron_0.jpg"
+							src="https://wallpaperaccess.com/full/2428972.jpg"
 							className="card-img-top"
 							alt="..."
 						/>
 						<div className="card-body">
 							<h5 className="card-title">{people.name}</h5>
 							<p className="card-text">
-								Gender:
+								<strong>Gender:</strong>
 								{people.gender}
 							</p>
 							<p className="card-text">
-								Color eyes:
+								<strong>Color eyes:</strong>
 								{people.eye_color}
 							</p>
 							<p className="card-text">
-								Hair color:
+								<strong>Hair color:</strong>
 								{people.hair_color}
 							</p>
-							<Link to="singleProPer">
-								<a href="#" className="btn btn-primary">
+							<Link to={"/singleProPer/" + i}>
+								<span style={{ float: "left" }} className="btn btn-primary">
 									Learn More!
-								</a>
+								</span>
 							</Link>
-							<button type="button" className="btn btn-outline-warning">
+
+							<button
+								style={{ float: "right" }}
+								onClick={() => actions.addFavorite(people.name, "people")}
+								type="button"
+								className="btn btn-outline-danger">
 								<i className="far fa-heart" />
 							</button>
 						</div>

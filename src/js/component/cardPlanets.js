@@ -12,30 +12,35 @@ export const CardPlanets = () => {
 					<div className="card mb-2" key={i} style={{ display: "flex", minWidth: "350px", margin: "10px" }}>
 						<img
 							//{props.img}
-							src="https://phantom-elmundo.unidadeditorial.es/df93f8e8824414f3eb155aa5f167fdd8/crop/18x29/690x375/resize/746/f/jpg/assets/multimedia/imagenes/2020/07/17/15949955446655.jpg"
+							src="https://www.wallpapertip.com/wmimgs/0-4377_star-wars-the-mandalorian.jpg"
 							className="card-img-top"
 							alt="..."
 						/>
 						<div className="card-body">
 							<h5 className="card-title">{planet.name}</h5>
 							<p className="card-text">
-								Population:
+								<strong>Population:</strong>
 								{planet.population}
 							</p>
 							<p className="card-text">
-								Climate:
+								<strong>Climate:</strong>
 								{planet.climate}
 							</p>
 							<p className="card-text">
-								Terrain:
+								<strong>Terrain:</strong>
 								{planet.terrain}
 							</p>
 							<Link to={"/singleProPla/" + i}>
-								<a href="#" className="btn btn-primary">
+								<span style={{ float: "left" }} className="btn btn-primary">
 									Learn More!
-								</a>
+								</span>
 							</Link>
-							<button type="button" className="btn btn-outline-warning">
+
+							<button
+								style={{ float: "right" }}
+								onClick={() => actions.addFavorite(planet.name, "planet")}
+								type="button"
+								className="btn btn-outline-danger">
 								<i className="far fa-heart" />
 							</button>
 						</div>
