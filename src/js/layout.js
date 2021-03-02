@@ -4,10 +4,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 //aqui va el appContext y flux
 import injectContext from "./store/appContext";
 import { Context } from "./store/appContext";
+
 //aqui va los views(posicion de vista)
 import { Home } from "./views/home";
 import { SingleProPer } from "./views/singleProPer.js";
 import { SingleProPla } from "./views/singleProPla.js";
+import { Register } from "./views/register.js";
+import { Login } from "./views/login.js";
 
 //aqui van los componentes
 import { Navbar } from "./component/navbar";
@@ -30,6 +33,12 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<Home />
+						</Route>
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/login">
+							<Login />
 						</Route>
 						<Route exact path="/singleProPer/:id">
 							<SingleProPer />

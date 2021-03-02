@@ -14,16 +14,17 @@ const getState = ({ getStore, getActions, setStore }) => {
                 */
 
 			loadPeople: async () => {
-				const url = "https://swapi.dev/api/people/";
+				const url = "https://3000-green-coral-uzzb5wky.ws-us03.gitpod.io/people/";
 				const response = await fetch(url);
 				const data = await response.json();
-				setStore({ peoples: data.results });
+				console.log(data);
+				setStore({ peoples: data });
 			},
 			loadPlanets: async () => {
-				const url = "https://swapi.dev/api/planets/";
+				const url = "https://3000-green-coral-uzzb5wky.ws-us03.gitpod.io/planets/";
 				const response = await fetch(url);
 				const data = await response.json();
-				setStore({ planets: data.results });
+				setStore({ planets: data });
 			},
 
 			addFavorite: (name, type) => {

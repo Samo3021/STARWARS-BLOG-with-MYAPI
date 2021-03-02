@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 export const CardPersons = () => {
 	const { store, actions } = useContext(Context);
 	// const [searchItem, setSearch] = useState();
-
+	console.log(store);
 	return (
 		<div className="d-flex flex-row p-4" style={{ maxWidth: "950px", overflow: "auto" }}>
 			{store.peoples.map((people, i) => {
