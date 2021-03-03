@@ -38,7 +38,7 @@ export const Register = () => {
 	};
 
 	return (
-		<div className="text-center mt-5 d-flex justify-content-center align-items-center bg-success m-5 p-4 mb-5">
+		<div className="text-center mt-5 d-flex justify-content-center align-items-center bg-success m-5 p-4 mb-5 w-5">
 			<form style={{ width: "400px" }} onSubmit={e => handleSubmit(e)}>
 				<div className="form-floating mb-3">
 					<input

@@ -26,6 +26,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				setStore({ planets: data });
 			},
+			/*loadFavorites: async () => {
+				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/favorites/";
+				const response = await fetch(url);
+				const data = await response.json();
+				setStore({ favorites: data });
+			},*/
 
 			addFavorite: (name, type) => {
 				const store = getStore();
