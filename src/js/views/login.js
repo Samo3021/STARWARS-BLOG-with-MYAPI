@@ -16,7 +16,7 @@ export const Login = () => {
 		// FETCH
 		const data = { email: email, password: pass };
 
-		fetch("https://3000-green-coral-uzzb5wky.ws-us03.gitpod.io/login", {
+		fetch("https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -27,7 +27,7 @@ export const Login = () => {
 			.then(data => {
 				console.log("Success:", data);
 				sessionStorage.setItem("u_token", data.token);
-				setRedirect(true);
+				setRedirect(data.activo);
 			})
 			.catch(error => {
 				console.error("Error:", error);
@@ -37,7 +37,7 @@ export const Login = () => {
 	};
 
 	return (
-		<div className="text-center mt-5 d-flex justify-content-center align-items-center">
+		<div className="text-center mt-5 d-flex justify-content-center align-items-center bg-success m-5 p-4 mb-5">
 			<form style={{ width: "400px" }} onSubmit={e => handleSubmit(e)}>
 				<div className="form-floating mb-3">
 					<input
@@ -61,7 +61,7 @@ export const Login = () => {
 				</div>
 				<input type="submit" className="btn btn-primary" value="Login" />
 			</form>
-			{redirect ? <Redirect to="/" /> : ""}
+			{redirect ? <Redirect to="/home" /> : ""}
 		</div>
 	);
 };

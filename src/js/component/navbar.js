@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Dropdown, DropdownButton } from "react-bootstrap";
@@ -7,7 +7,7 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar navbar-dark bg-primary mb-5">
-			<Link to="/">
+			<Link to="/home">
 				<span className="navbar-brand ml-5 h1">
 					<img
 						src="https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-svg-vector.svg"
@@ -15,6 +15,15 @@ export const Navbar = () => {
 					/>
 				</span>
 			</Link>
+			<Link to="/register">
+				<button className="btn btn-success">Register</button>
+			</Link>
+			<Link to="/">
+				<button className="btn btn-danger" onClick={() => sessionStorage.clear()}>
+					log out
+				</button>
+			</Link>
+
 			<div className="ml-auto">
 				<Link to="/">{/* <button className="btn btn-primary">Check the Context in action</button> */}</Link>
 			</div>

@@ -31,13 +31,13 @@ const Layout = () => {
 				<Navbar />
 				<ScrollToTop>
 					<Switch>
-						<Route exact path="/">
+						<Route path="/home">
 							<Home />
 						</Route>
 						<Route exact path="/register">
 							<Register />
 						</Route>
-						<Route exact path="/login">
+						<Route exact path="/">
 							<Login />
 						</Route>
 						<Route exact path="/singleProPer/:id">

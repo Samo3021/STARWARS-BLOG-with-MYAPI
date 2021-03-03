@@ -86,7 +86,7 @@ export const SingleProPla = props => {
 								</div>
 							</div>
 							<br />
-							<Link to="/">
+							<Link to="/home">
 								<span className="btn btn-primary btn-lg" href="#" role="button">
 									Back home
 								</span>

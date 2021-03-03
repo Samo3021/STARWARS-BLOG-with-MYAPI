@@ -14,14 +14,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                 */
 
 			loadPeople: async () => {
-				const url = "https://3000-green-coral-uzzb5wky.ws-us03.gitpod.io/people/";
+				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/people/";
 				const response = await fetch(url);
 				const data = await response.json();
 				console.log(data);
 				setStore({ peoples: data });
 			},
 			loadPlanets: async () => {
-				const url = "https://3000-green-coral-uzzb5wky.ws-us03.gitpod.io/planets/";
+				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/planets/";
 				const response = await fetch(url);
 				const data = await response.json();
 				setStore({ planets: data });
