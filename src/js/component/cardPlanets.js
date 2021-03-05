@@ -38,7 +38,7 @@ export const CardPlanets = () => {
 
 							<button
 								style={{ float: "right" }}
-								onClick={() => actions.addFavorite(planet.name, "planet")}
+								onClick={() => actions.addFavorite(planet.name, "planet", planet.id)}
 								type="button"
 								className="btn btn-outline-danger">
 								<i className="far fa-heart" />

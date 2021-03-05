@@ -5,7 +5,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			planets: [],
 
-			favorites: []
+			favorites: [
+				// {
+				// 	name: "samuel",
+				// 	type: "people"
+				// },
+				// {
+				// 	name: "favi",
+				// 	type: "people"
+				// }
+			]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -26,14 +35,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				setStore({ planets: data });
 			},
-			/*loadFavorites: async () => {
-				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/favorites/";
+			loadFavorites: async userid => {
+				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/`${userid}`/favorites";
 				const response = await fetch(url);
 				const data = await response.json();
 				setStore({ favorites: data });
-			},*/
+			},
 
-			addFavorite: (name, type) => {
+			addFavorite: (name, type, id) => {
+				const data = { objec_id: id, name: name };
+
+				fetch("https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/favorites", {
+					method: "POST",
+					// mode: "cors",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("u_token")
+					},
+					body: JSON.stringify(data)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						// setRedirect(true);
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+
 				const store = getStore();
 				let count = 0;
 				store.favorites.map(each => {
@@ -41,13 +70,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						count = 1;
 					}
 				});
+
 				if (count == 0) {
 					setStore({
 						favorites: [
 							...store.favorites,
 							{
 								name: name,
-								type: type
+								type: type,
+								id: id
 							}
 						]
 					});

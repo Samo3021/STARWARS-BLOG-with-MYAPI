@@ -6,6 +6,31 @@ import { Context } from "../store/appContext";
 export const CardPersons = () => {
 	const { store, actions } = useContext(Context);
 	// const [searchItem, setSearch] = useState();
+	const addfavuser = userid => {
+		// e.preventDefault();
+		// if (email === "" || pass === "" || name === "" || lastname === "") {
+		// 	alert("correo y contraseña son requeridos");
+		// }
+		// console.log(email, pass, name, lastname);
+		// FETCH
+		// const data = { object_id: id, name: name };
+		// fetch("https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/favorites", {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"Content-Type": "application/json"
+		// 	},
+		// 	body: JSON.stringify(data)
+		// })
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		console.log("Success:", data);
+		// 		// setRedirect(true);
+		// 	})
+		// 	.catch(error => {
+		// 		console.error("Error:", error);
+		// 	});
+		// setRedirect(true);
+	};
 	console.log(store);
 	return (
 		<div className="d-flex flex-row p-4" style={{ maxWidth: "950px", overflow: "auto" }}>
@@ -40,7 +65,7 @@ export const CardPersons = () => {
 
 							<button
 								style={{ float: "right" }}
-								onClick={() => actions.addFavorite(people.name, "people")}
+								onClick={() => actions.addFavorite(people.name, "people", people.id)}
 								type="button"
 								className="btn btn-outline-danger">
 								<i className="far fa-heart" />

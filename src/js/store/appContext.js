@@ -24,6 +24,7 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			state.actions.loadPeople();
 			state.actions.loadPlanets();
+			state.actions.loadFavorites();
 			// console.log(sessionStorage.getItem("u_token"));
 		}, []);
 
