@@ -49,7 +49,11 @@ export const Navbar = () => {
 			)}
 			{location.pathname == "/home" ? (
 				<Link to="/">
-					<button className="btn btn-danger" onClick={() => sessionStorage.clear()}>
+					<button
+						className="btn btn-danger"
+						onClick={() => {
+							sessionStorage.clear(), actions.logout();
+						}}>
 						log out
 					</button>
 				</Link>

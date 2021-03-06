@@ -35,15 +35,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				setStore({ planets: data });
 			},
-			loadFavorites: async userid => {
-				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/`${userid}`/favorites";
-				const response = await fetch(url);
+			loadFavorites: async () => {
+				//me confunde esta sintaxis(si hace falta?)
+				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/favorites";
+				const response = await fetch(url, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("u_token")
+					}
+				});
 				const data = await response.json();
 				setStore({ favorites: data });
 			},
 
 			addFavorite: (name, type, id) => {
-				const data = { objec_id: id, name: name };
+				const data = { object_id: id, name: name };
 
 				fetch("https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/favorites", {
 					method: "POST",
@@ -57,7 +64,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						console.log("Success:", data);
-						// setRedirect(true);
 					})
 					.catch(error => {
 						console.error("Error:", error);
@@ -85,9 +91,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			deleteFavorite: id => {
+				const data = { object_id: id, name: name }; //este dato hace falta?/lo que debo borrar es la id
+				//me confunde esta sintaxis(si hace falta?), esa nueva forma me sirve?
+				fetch(`https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/favorites/${id}`, {
+					method: "DELETE",
+					// mode: "cors",
+					headers: {
+						"Content-Type": "application/json", //hace falta esto?
+						Authorization: "Bearer " + sessionStorage.getItem("u_token") //siento q eto no hace falta el Delete, solo es borrar
+					},
+					body: JSON.stringify(data)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+
 				const store = getStore();
 				const newFavorites = store.favorites.filter((item, i) => i !== id);
 				setStore({ favorites: newFavorites });
+			},
+			logout: () => {
+				setStore({ favorites: [] });
 			}
 		}
 	};
