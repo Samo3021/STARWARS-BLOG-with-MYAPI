@@ -35,18 +35,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				setStore({ planets: data });
 			},
-			loadFavorites: async () => {
+			loadFavorites: () => {
 				//me confunde esta sintaxis(si hace falta?)
-				const url = "https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/favorites";
-				const response = await fetch(url, {
+				fetch("https://3000-cyan-ptarmigan-0gz2mubx.ws-us03.gitpod.io/user/favorites", {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
 						Authorization: "Bearer " + sessionStorage.getItem("u_token")
 					}
-				});
-				const data = await response.json();
-				setStore({ favorites: data });
+				})
+					.then(response => response.json())
+					.then(data => setStore({ favorites: data }));
 			},
 
 			addFavorite: (name, type, id) => {
