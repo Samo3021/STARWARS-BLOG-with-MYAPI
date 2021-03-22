@@ -25,8 +25,16 @@ export const Login = () => {
 		})
 			.then(response => response.json())
 			.then(data => {
+				let session_info = {
+					token: data,
+					userinfo: data.user.userid,
+					favo: data.user.favChild
+				};
+				console.log("session-info", session_info);
+				sessionStorage.setItem("user_information", JSON.stringify(session_info));
 				console.log("Success:", data);
 				sessionStorage.setItem("u_token", data.token);
+				console.log(sessionStorage);
 				setRedirect(data.activo);
 			})
 			.catch(error => {

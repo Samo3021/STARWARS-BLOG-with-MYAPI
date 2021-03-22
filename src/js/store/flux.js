@@ -40,15 +40,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("que hay", getStore());
 				console.log("buscar id");
 
-				fetch(`https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/user/favorites`, {
+				fetch(`https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/user/favorites/{fav}`, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: "Bearer " + seccionStorage.getItem("u_token")
+						Authorization: "Bearer " + sessionStorage.getItem("u_token")
 					}
 				})
 					.then(response => response.json())
-					.then(data => setStore(console.log("a ver q hay", { favorites: data })));
+					.then(data => setStore({ favorites: data }));
 			},
 
 			addFavorite: (name, type, id) => {
@@ -59,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// mode: "cors",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: "Bearer " + seccionStorage.getItem("u_token")
+						Authorization: "Bearer " + sessionStorage.getItem("u_token")
 					},
 					body: JSON.stringify(data)
 				})
