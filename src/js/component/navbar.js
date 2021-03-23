@@ -5,6 +5,8 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	let location = useLocation();
+	// let ojo = store;
+	// console.log("Revisando", ojo);
 
 	return (
 		<nav className="navbar navbar-dark bg-primary mb-5">

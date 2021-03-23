@@ -16,7 +16,7 @@ export const Login = () => {
 		// FETCH
 		const data = { email: email, password: pass };
 
-		fetch("https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/login", {
+		fetch("https://3000-pink-lemming-ndir8koy.ws-us03.gitpod.io/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -30,11 +30,11 @@ export const Login = () => {
 					userinfo: data.user.userid,
 					favo: data.user.favChild
 				};
-				console.log("session-info", session_info);
+				console.log("session_info", session_info);
 				sessionStorage.setItem("user_information", JSON.stringify(session_info));
 				console.log("Success:", data);
 				sessionStorage.setItem("u_token", data.token);
-				console.log(sessionStorage);
+				// console.log(sessionStorage);
 				setRedirect(data.activo);
 			})
 			.catch(error => {

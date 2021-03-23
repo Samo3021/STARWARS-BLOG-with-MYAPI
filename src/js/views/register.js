@@ -18,7 +18,7 @@ export const Register = () => {
 		// FETCH
 		const data = { email: email, password: pass, name: name, lastname: lastname };
 
-		fetch("https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/register", {
+		fetch("https://3000-pink-lemming-ndir8koy.ws-us03.gitpod.io/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

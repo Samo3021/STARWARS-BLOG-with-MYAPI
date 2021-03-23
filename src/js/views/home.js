@@ -7,8 +7,8 @@ import { CardPlanets } from "../component/cardPlanets.js";
 
 export const Home = () => {
 	const local = JSON.parse(sessionStorage.getItem("user_information")).favo;
-	console.log("buscar id", local);
-	console.log("fav");
+	console.log("FAVO", local);
+	// console.log("fav");
 	/* const testPrivado = () => {
 		fetch("https://3000-emerald-jellyfish-qyn0ga41.ws-us03.gitpod.io/profile", {
 			method: "GET",

@@ -23,24 +23,28 @@ const getState = ({ getStore, getActions, setStore }) => {
                 */
 
 			loadPeople: async () => {
-				const url = "https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/people/";
+				const url = "https://3000-pink-lemming-ndir8koy.ws-us03.gitpod.io/people/";
 				const response = await fetch(url);
 				const data = await response.json();
 				console.log(data);
 				setStore({ peoples: data });
 			},
 			loadPlanets: async () => {
-				const url = "https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/planets/";
+				const url = "https://3000-pink-lemming-ndir8koy.ws-us03.gitpod.io/planets/";
 				const response = await fetch(url);
 				const data = await response.json();
 				setStore({ planets: data });
 			},
 			loadFavorites: () => {
 				//me confunde esta sintaxis(si hace falta?)
-				console.log("que hay", getStore());
-				console.log("buscar id");
+				console.log("aqui esta el getStore", getStore());
+				// let respuestas = sessionStorage.getItem("user_information");
+				const local = JSON.parse(sessionStorage.getItem("user_information")).userinfo;
+				console.log("local en flux", local);
+				let usuarios = local.toString();
+				console.log("buscar el userin");
 
-				fetch(`https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/user/favorites/{fav}`, {
+				fetch(`https://3000-pink-lemming-ndir8koy.ws-us03.gitpod.io/user/${usuarios}/favorites`, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
@@ -54,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavorite: (name, type, id) => {
 				const data = { object_id: id, name: name };
 
-				fetch("https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/user/favorites", {
+				fetch("https://3000-pink-lemming-ndir8koy.ws-us03.gitpod.io/user/favorites", {
 					method: "POST",
 					// mode: "cors",
 					headers: {
@@ -95,7 +99,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteFavorite: id => {
 				const data = { object_id: id, name: name }; //este dato hace falta?/lo que debo borrar es la id
 				//me confunde esta sintaxis(si hace falta?), esa nueva forma me sirve?
-				fetch(`https://3000-crimson-baboon-3drybsqc.ws-us03.gitpod.io/favorites/${id}`, {
+				fetch(`https://3000-pink-lemming-ndir8koy.ws-us03.gitpod.io/favorites/${id}`, {
 					method: "DELETE",
 					// mode: "cors",
 					headers: {
